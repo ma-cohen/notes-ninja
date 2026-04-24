@@ -24,6 +24,16 @@ To sync your notes with GitHub:
 
 That's it! The commands are ready to use.
 
+## Updating
+
+To get the latest commands, run from your notes directory:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ma-cohen/notes-ninja/main/update.sh | bash
+```
+
+Your notes and todos are never touched - only the command files are updated.
+
 ## Commands
 
 Type `/` in chat to see available commands:
@@ -73,14 +83,13 @@ The assistant will automatically find the best file to add your note to, or crea
 ## File Structure
 
 ```
-notes-ninja/
+my-notes/
 ├── .cursor/commands/    # Slash commands
 │   ├── nn-todo.md
 │   ├── nn-add.md
 │   └── nn-ask.md
 ├── notes/               # Your notes (auto-organized)
-├── todos/main.md        # Your todo list
-└── README.md
+└── todos/main.md        # Your todo list
 ```
 
 ## Tips
