@@ -4,20 +4,22 @@ A personal assistant for Cursor that manages your notes and todos using slash co
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/notes-ninja.git
-   cd notes-ninja
-   ```
+Run the install script with your preferred folder name:
 
-2. Open in Cursor:
-   ```bash
-   cursor .
-   ```
+```bash
+curl -fsSL https://raw.githubusercontent.com/ma-cohen/notes-ninja/main/install.sh | bash -s my-notes
+cd my-notes
+cursor .
+```
 
-3. Set up your remote (to sync your notes):
+To sync your notes with GitHub:
+
+1. Create a new repository on GitHub (any name you like)
+2. Connect and push:
    ```bash
-   git remote set-url origin https://github.com/YOUR_USERNAME/notes-ninja.git
+   git remote add origin https://github.com/YOUR_USERNAME/your-repo-name.git
+   git add . && git commit -m "Initial setup"
+   git push -u origin main
    ```
 
 That's it! The commands are ready to use.
