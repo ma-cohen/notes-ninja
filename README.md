@@ -1,6 +1,6 @@
 # Notes Ninja
 
-A personal assistant for Cursor that manages your notes and todos using simple commands.
+A personal assistant for Cursor that manages your notes and todos using slash commands.
 
 ## Installation
 
@@ -20,46 +20,46 @@ A personal assistant for Cursor that manages your notes and todos using simple c
    git remote set-url origin https://github.com/YOUR_USERNAME/notes-ninja.git
    ```
 
-That's it! The assistant is ready to use.
+That's it! The commands are ready to use.
 
 ## Commands
 
-### #todo - Add Todo Items
+Type `/` in chat to see available commands:
+
+### /nn-todo - Add Todo Items
 
 ```
-#todo buy groceries
+/nn-todo buy groceries
 ```
 
-Add multiple at once:
 ```
-#todo batch
-- call mom
-- finish report
-- book dentist appointment
+/nn-todo call mom, finish report, book dentist
 ```
 
-### #add - Add Notes/Ideas
+### /nn-add - Add Notes/Ideas
 
 ```
-#add learned that Python decorators are just syntactic sugar for higher-order functions
+/nn-add learned that Python decorators are just syntactic sugar for higher-order functions
 ```
 
-Add multiple at once:
 ```
-#add batch
-- idea: app that tracks water intake
-- remember: meeting with John next Tuesday
-- tip: use `git stash` to save uncommitted changes
+/nn-add idea: app that tracks water intake
 ```
 
 The assistant will automatically find the best file to add your note to, or create a new one if needed.
 
-### #ask - Query Your Notes
+### /nn-ask - Query Your Notes
 
 ```
-#ask what ideas do I have about apps?
-#ask what did I learn about Python?
-#ask what todos do I have?
+/nn-ask what ideas do I have about apps?
+```
+
+```
+/nn-ask what did I learn about Python?
+```
+
+```
+/nn-ask what todos do I have?
 ```
 
 ## How It Works
@@ -72,7 +72,10 @@ The assistant will automatically find the best file to add your note to, or crea
 
 ```
 notes-ninja/
-├── .cursor/rules/       # Cursor rules (the assistant brain)
+├── .cursor/commands/    # Slash commands
+│   ├── nn-todo.md
+│   ├── nn-add.md
+│   └── nn-ask.md
 ├── notes/               # Your notes (auto-organized)
 ├── todos/main.md        # Your todo list
 └── README.md
@@ -80,6 +83,6 @@ notes-ninja/
 
 ## Tips
 
-- Keep your notes atomic - one idea per `#add` command
-- Use `#ask` to find things you've forgotten
+- Keep your notes atomic - one idea per `/nn-add` command
+- Use `/nn-ask` to find things you've forgotten
 - Your data is safe in GitHub - commit history preserves everything
