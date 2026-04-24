@@ -17,9 +17,39 @@ When the user's message starts with `#todo`:
 2. **Batch mode**: `#todo batch` followed by a list → Add multiple todos
 
 **Action:**
-- Open `todos/main.md`
-- Add new items as `- [ ] Task description` 
-- Place new items at the end of the list (before any completed items)
+1. Read `todos/main.md` to see existing sections (marked with `##`)
+2. For each todo item, analyze its content and determine the best category:
+   - Look for keywords to match existing sections
+   - Common categories: Shopping, Work, Health, Development, Home, Finance, Personal
+3. If a matching section exists → add the todo under that section
+4. If no matching section exists → create a new `## Category Name` section
+5. Add items as `- [ ] Task description`
+6. Use `## Uncategorized` as fallback for ambiguous items
+7. Keep `## Completed` section always at the bottom (move `- [x]` items there)
+
+**Category matching examples:**
+- "buy milk", "groceries" → Shopping
+- "finish report", "meeting" → Work  
+- "call dentist", "gym" → Health
+- "fix bug", "deploy" → Development
+- "clean garage", "fix sink" → Home
+
+**File structure:**
+```markdown
+# Todo List
+
+## Shopping
+- [ ] Buy groceries
+
+## Work
+- [ ] Finish report
+
+## Uncategorized
+- [ ] Random task
+
+## Completed
+- [x] Done task
+```
 
 ### #add - Add Notes/Ideas
 

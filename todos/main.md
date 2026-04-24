@@ -1,2 +1,6 @@
 # Todo List
 
+## Uncategorized
+
+## Completed
+
