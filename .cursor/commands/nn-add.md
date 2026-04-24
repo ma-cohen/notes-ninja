@@ -27,8 +27,3 @@ tags: [tag1, tag2]
 Content here...
 ```
 
-## After Adding
-
-1. Stage the changed files: `git add .`
-2. Commit with message: `git commit -m "Add note: brief description"`
-3. Push to remote: `git push`

@@ -22,8 +22,3 @@ Add todo items to the todo list at `todos/main.md`.
 - "fix bug", "deploy" → Development
 - "clean garage", "fix sink" → Home
 
-## After Adding
-
-1. Stage the changed files: `git add .`
-2. Commit with message: `git commit -m "Add todo: brief description"`
-3. Push to remote: `git push`
