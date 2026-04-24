@@ -32,7 +32,7 @@ To get the latest commands, run from your notes directory:
 curl -fsSL https://raw.githubusercontent.com/ma-cohen/notes-ninja/main/update.sh | bash
 ```
 
-Your notes and todos are never touched - only the command files are updated.
+Your notes and todos are never touched - only the `.cursor` folder is updated.
 
 ## Commands
 
