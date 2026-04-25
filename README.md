@@ -24,6 +24,8 @@ To sync your notes with GitHub:
 
 That's it! The commands are ready to use.
 
+After you connect a GitHub remote, use `/nn-push` in Cursor whenever you want to commit and push your latest notes and todos.
+
 ## Updating
 
 To get the latest commands, run from your notes directory:
@@ -33,6 +35,8 @@ curl -fsSL https://raw.githubusercontent.com/ma-cohen/notes-ninja/main/update.sh
 ```
 
 Your notes and todos are never touched - only the `.cursor` folder is updated.
+
+If you installed an older version that auto-committed after changes, updating replaces that behavior with the manual `/nn-push` command.
 
 ## Commands
 
@@ -82,11 +86,19 @@ The assistant will automatically find the best file to add your note to, or crea
 
 The assistant will review your open todos, help you pick one mission to do now, and wait for you to report back. When you finish, it removes that mission from `todos/main.md`.
 
+### /nn-push - Commit and Push
+
+```
+/nn-push
+```
+
+The assistant will review your repository changes, create a meaningful commit, and push it to GitHub. You decide when to run it.
+
 ## How It Works
 
 - **Todos** are stored in `todos/main.md` as a simple checkbox list
 - **Notes** are stored in `notes/` as markdown files, organized by topic
-- After each write operation, changes are automatically committed and pushed to GitHub
+- **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
 ## File Structure
 
@@ -96,7 +108,8 @@ my-notes/
 │   ├── nn-todo.md
 │   ├── nn-add.md
 │   ├── nn-ask.md
-│   └── nn-just-do-it.md
+│   ├── nn-just-do-it.md
+│   └── nn-push.md
 ├── notes/               # Your notes (auto-organized)
 └── todos/main.md        # Your todo list
 ```
@@ -105,4 +118,5 @@ my-notes/
 
 - Keep your notes atomic - one idea per `/nn-add` command
 - Use `/nn-ask` to find things you've forgotten
+- Run `/nn-push` when you want to save your latest changes to GitHub
 - Your data is safe in GitHub - commit history preserves everything

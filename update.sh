@@ -17,3 +17,5 @@ cp -r /tmp/notes-ninja-main/.cursor .
 rm -rf /tmp/notes-ninja-main /tmp/nn-update.tar.gz
 
 echo "Done! Updated to latest version."
+echo "Auto commit/push hooks have been replaced by the manual /nn-push command."
+echo "Run /nn-push in Cursor whenever you want to commit and push changes."
