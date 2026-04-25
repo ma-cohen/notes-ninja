@@ -16,6 +16,7 @@ echo "Downloading commands..."
 curl -fsSL "$REPO_URL/.cursor/commands/nn-todo.md" -o "$DIR_NAME/.cursor/commands/nn-todo.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-add.md" -o "$DIR_NAME/.cursor/commands/nn-add.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-ask.md" -o "$DIR_NAME/.cursor/commands/nn-ask.md"
+curl -fsSL "$REPO_URL/.cursor/commands/nn-organize.md" -o "$DIR_NAME/.cursor/commands/nn-organize.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-just-do-it.md" -o "$DIR_NAME/.cursor/commands/nn-just-do-it.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-push.md" -o "$DIR_NAME/.cursor/commands/nn-push.md"
 

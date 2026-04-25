@@ -78,6 +78,18 @@ The assistant will automatically find the best file to add your note to, or crea
 /nn-ask what todos do I have?
 ```
 
+### /nn-organize - Reorganize Notes
+
+```
+/nn-organize combine my Python notes into one file
+```
+
+```
+/nn-organize split mixed app ideas into separate topic files
+```
+
+The assistant will reorganize files in `notes/` based on your request while preserving note content, dates, and frontmatter.
+
 ### /nn-just-do-it - Interactive Task Coach
 
 ```
@@ -97,7 +109,7 @@ The assistant will review your repository changes, create a meaningful commit, a
 ## How It Works
 
 - **Todos** are stored in `todos/main.md` as a simple checkbox list
-- **Notes** are stored in `notes/` as markdown files, organized by topic
+- **Notes** are stored in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
 ## File Structure
@@ -108,6 +120,7 @@ my-notes/
 │   ├── nn-todo.md
 │   ├── nn-add.md
 │   ├── nn-ask.md
+│   ├── nn-organize.md
 │   ├── nn-just-do-it.md
 │   └── nn-push.md
 ├── notes/               # Your notes (auto-organized)
@@ -118,5 +131,6 @@ my-notes/
 
 - Keep your notes atomic - one idea per `/nn-add` command
 - Use `/nn-ask` to find things you've forgotten
+- Use `/nn-organize` when related notes should be combined, split, renamed, or moved
 - Run `/nn-push` when you want to save your latest changes to GitHub
 - Your data is safe in GitHub - commit history preserves everything
