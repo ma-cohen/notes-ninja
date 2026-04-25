@@ -16,6 +16,7 @@ echo "Downloading commands..."
 curl -fsSL "$REPO_URL/.cursor/commands/nn-todo.md" -o "$DIR_NAME/.cursor/commands/nn-todo.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-add.md" -o "$DIR_NAME/.cursor/commands/nn-add.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-ask.md" -o "$DIR_NAME/.cursor/commands/nn-ask.md"
+curl -fsSL "$REPO_URL/.cursor/commands/nn-just-do-it.md" -o "$DIR_NAME/.cursor/commands/nn-just-do-it.md"
 
 echo "Setting up starter files..."
 curl -fsSL "$REPO_URL/todos/main.md" -o "$DIR_NAME/todos/main.md"

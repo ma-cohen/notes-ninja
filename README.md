@@ -74,6 +74,14 @@ The assistant will automatically find the best file to add your note to, or crea
 /nn-ask what todos do I have?
 ```
 
+### /nn-just-do-it - Interactive Task Coach
+
+```
+/nn-just-do-it
+```
+
+The assistant will review your open todos, help you pick one mission to do now, and wait for you to report back. When you finish, it removes that mission from `todos/main.md`.
+
 ## How It Works
 
 - **Todos** are stored in `todos/main.md` as a simple checkbox list
@@ -87,7 +95,8 @@ my-notes/
 ├── .cursor/commands/    # Slash commands
 │   ├── nn-todo.md
 │   ├── nn-add.md
-│   └── nn-ask.md
+│   ├── nn-ask.md
+│   └── nn-just-do-it.md
 ├── notes/               # Your notes (auto-organized)
 └── todos/main.md        # Your todo list
 ```
