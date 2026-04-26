@@ -52,6 +52,18 @@ Type `/` in chat to see available commands:
 /nn-todo call mom, finish report, book dentist
 ```
 
+### /nn-remove-task - Remove Completed Todo Items
+
+```
+/nn-remove-task finished buy groceries
+```
+
+```
+/nn-remove-task done with call mom and book dentist
+```
+
+The assistant will remove matching open tasks from `todos/main.md`. You can remove one task or several at once.
+
 ### /nn-add - Add Notes/Ideas
 
 ```
@@ -118,6 +130,7 @@ The assistant will review your repository changes, create a meaningful commit, a
 my-notes/
 ├── .cursor/commands/    # Slash commands
 │   ├── nn-todo.md
+│   ├── nn-remove-task.md
 │   ├── nn-add.md
 │   ├── nn-ask.md
 │   ├── nn-organize.md

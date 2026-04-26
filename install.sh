@@ -14,6 +14,7 @@ mkdir -p "$DIR_NAME/.cursor/commands" "$DIR_NAME/todos" "$DIR_NAME/notes"
 
 echo "Downloading commands..."
 curl -fsSL "$REPO_URL/.cursor/commands/nn-todo.md" -o "$DIR_NAME/.cursor/commands/nn-todo.md"
+curl -fsSL "$REPO_URL/.cursor/commands/nn-remove-task.md" -o "$DIR_NAME/.cursor/commands/nn-remove-task.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-add.md" -o "$DIR_NAME/.cursor/commands/nn-add.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-ask.md" -o "$DIR_NAME/.cursor/commands/nn-ask.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-organize.md" -o "$DIR_NAME/.cursor/commands/nn-organize.md"
