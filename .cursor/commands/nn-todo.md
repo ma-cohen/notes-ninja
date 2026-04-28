@@ -7,8 +7,6 @@ Add todo items to `todos/main.md` or to a tagged project todo file.
 1. Determine the target todo file:
    - If the user tags exactly one `todos/b-*.md` file, use that file
    - If the user does not tag a project todo file, use `todos/main.md`
-   - If the user tags more than one todo file, ask one short clarification question before editing
-   - If the user tags a todo file that is not `todos/main.md` and does not start with `b-`, ask for clarification because project todo files must start with `b-`
 2. Read the target todo file to see existing sections (marked with `##`)
 3. For each todo item in the user's message, remove any file tag from the task text, then analyze the content and determine the best category:
    - Look for keywords to match existing sections
