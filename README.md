@@ -52,23 +52,31 @@ Type `/` in chat to see available commands:
 /nn-todo call mom, finish report, book dentist
 ```
 
-```
-/nn-todo @todos/b-app-launch.md follow up with designer
-```
+The assistant adds todos to `todos/main.md` in the current workspace.
 
-The assistant adds todos to `todos/main.md` by default. When you tag one project todo file like `todos/b-app-launch.md`, it adds the todo there instead.
-
-### /nn-todo-split - Split Project Todos
+### /nn-split-project - Split Work Into A Project
 
 ```
-/nn-todo-split move the app launch tasks into their own project
+/nn-split-project move the app launch tasks into their own project
 ```
 
 ```
-/nn-todo-split split kitchen renovation todos into b-kitchen-renovation
+/nn-split-project split kitchen renovation into its own project
 ```
 
-The assistant finds matching open tasks in `todos/main.md`, proposes a focused project file whose name starts with `b-`, and asks you to confirm before moving anything.
+The assistant finds matching open tasks in `todos/main.md`, analyzes relevant notes in `notes/`, creates a new project folder, copies `.cursor`, and asks you to confirm before moving anything.
+
+### /nn-create-project - Create An Empty Project
+
+```
+/nn-create-project personal website
+```
+
+```
+/nn-create-project kitchen renovation
+```
+
+The assistant creates a new project folder with `.cursor/`, `todos/main.md`, and an empty `notes/` folder.
 
 ### /nn-remove-task - Remove Completed Todo Items
 
@@ -139,7 +147,7 @@ The assistant will review your repository changes, create a meaningful commit, a
 ## How It Works
 
 - **Todos** are stored in `todos/main.md` as a simple checkbox list
-- **Project todos** are stored in focused `todos/b-*.md` files and can receive new tasks when tagged with `/nn-todo`
+- **Projects** are folders in the same repository, each with its own `.cursor/`, `todos/main.md`, and `notes/`
 - **Notes** are stored in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
@@ -149,7 +157,8 @@ The assistant will review your repository changes, create a meaningful commit, a
 my-notes/
 ├── .cursor/commands/    # Slash commands
 │   ├── nn-todo.md
-│   ├── nn-todo-split.md
+│   ├── nn-split-project.md
+│   ├── nn-create-project.md
 │   ├── nn-remove-task.md
 │   ├── nn-add.md
 │   ├── nn-ask.md
@@ -157,15 +166,20 @@ my-notes/
 │   ├── nn-just-do-it.md
 │   └── nn-push.md
 ├── notes/               # Your notes (auto-organized)
-└── todos/
-    ├── main.md          # Your main todo list
-    └── b-project-name.md # Example focused project todo list
+├── todos/
+│   └── main.md          # Your main todo list
+└── project-name/        # Optional nested project
+    ├── .cursor/
+    ├── notes/
+    └── todos/
+        └── main.md
 ```
 
 ## Tips
 
 - Keep your notes atomic - one idea per `/nn-add` command
-- Use `/nn-todo-split` when `todos/main.md` gets crowded with one project's work
+- Use `/nn-split-project` when `todos/main.md` and `notes/` contain work that deserves its own project folder
+- Use `/nn-create-project` when you want to start a new empty project
 - Use `/nn-ask` to find things you've forgotten
 - Use `/nn-organize` when related notes should be combined, split, renamed, or moved
 - Run `/nn-push` when you want to save your latest changes to GitHub
