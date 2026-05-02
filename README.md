@@ -64,7 +64,7 @@ The assistant adds todos to `todos/main.md` in the current workspace.
 /nn-split-project split kitchen renovation into its own project
 ```
 
-The assistant finds matching open tasks in `todos/main.md`, analyzes relevant notes in `notes/`, creates a new project folder, copies `.cursor`, and asks you to confirm before moving anything.
+The assistant finds matching open tasks in `todos/main.md`, creates a new todo-only project folder, copies `.cursor`, and asks you to confirm before moving any todos. Notes stay in the top-level `notes/` folder.
 
 ### /nn-create-project - Create An Empty Project
 
@@ -76,7 +76,7 @@ The assistant finds matching open tasks in `todos/main.md`, analyzes relevant no
 /nn-create-project kitchen renovation
 ```
 
-The assistant creates a new project folder with `.cursor/`, `todos/main.md`, and an empty `notes/` folder.
+The assistant creates a new todo-only project folder with `.cursor/` and `todos/main.md`.
 
 ### /nn-remove-task - Remove Completed Todo Items
 
@@ -147,8 +147,8 @@ The assistant will review your repository changes, create a meaningful commit, a
 ## How It Works
 
 - **Todos** are stored in `todos/main.md` as a simple checkbox list
-- **Projects** are folders in the same repository, each with its own `.cursor/`, `todos/main.md`, and `notes/`
-- **Notes** are stored in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
+- **Projects** are todo-only folders in the same repository, each with its own `.cursor/` and `todos/main.md`
+- **Notes** are stored globally in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
 ## File Structure
@@ -170,7 +170,6 @@ my-notes/
 │   └── main.md          # Your main todo list
 └── project-name/        # Optional nested project
     ├── .cursor/
-    ├── notes/
     └── todos/
         └── main.md
 ```
@@ -178,7 +177,7 @@ my-notes/
 ## Tips
 
 - Keep your notes atomic - one idea per `/nn-add` command
-- Use `/nn-split-project` when `todos/main.md` and `notes/` contain work that deserves its own project folder
+- Use `/nn-split-project` when todo work deserves its own project folder; notes stay in the top-level `notes/`
 - Use `/nn-create-project` when you want to start a new empty project
 - Use `/nn-ask` to find things you've forgotten
 - Use `/nn-organize` when related notes should be combined, split, renamed, or moved

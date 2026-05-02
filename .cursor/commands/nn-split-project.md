@@ -1,6 +1,6 @@
 # Split Project
 
-Create a new project folder in this repository and move the relevant todos and notes into it.
+Create a new project folder in this repository and move the relevant open todos into it.
 
 ## Instructions
 
@@ -17,24 +17,16 @@ Create a new project folder in this repository and move the relevant todos and n
    - Use clear partial or semantic matches when the user's wording obviously refers to specific tasks.
    - Do not move unrelated tasks just because they share a broad category.
    - If matching is ambiguous or too broad, ask one short clarification question before editing.
-5. Review `notes/` for relevant notes:
-   - List markdown files in `notes/`.
-   - Read frontmatter, headings, and entries to understand each note.
-   - Treat a full note file as relevant only when the whole file is clearly about the project.
-   - Treat individual entries or sections as relevant when a mixed note contains clearly project-specific content.
-   - If relevance is uncertain, include it in the confirmation as optional or ask before editing.
+5. Do not review, copy, move, or delete anything in `notes/`. Notes stay in the parent workspace's global knowledge base.
 6. Before editing, ask the user to confirm:
    - The project folder that will be created.
    - The exact todo lines that will move from `todos/main.md`.
-   - The note files, sections, or entries that will move from `notes/`.
-   - Any notes that looked related but were left out because they were ambiguous.
 7. Do not edit any files until the user explicitly approves the split.
 8. After approval, create the project structure:
 
 ```text
 <project-name>/
 ├── .cursor/
-├── notes/
 └── todos/
     └── main.md
 ```
@@ -57,27 +49,19 @@ Create a new project folder in this repository and move the relevant todos and n
    - Put tasks under matching existing `##` sections when useful.
    - Use `## Uncategorized` as fallback.
    - Keep `## Completed` at the bottom.
-12. Move the approved notes:
-   - Move entire note files when all meaningful content in the file belongs to the project.
-   - For mixed note files, copy only the approved relevant sections or dated entries into an appropriate file under `<project-name>/notes/`, then remove those exact sections or entries from the parent note file.
-   - Preserve frontmatter, titles, tags, dates, headings, and meaningful context.
-   - If creating a new project note from extracted entries, use descriptive kebab-case filenames and valid frontmatter.
-   - Remove a parent note file only when all meaningful content has moved.
-13. Preserve existing section headings, section order, and blank-line style in edited parent files.
-14. After editing, briefly confirm:
+12. Preserve existing section headings, section order, and blank-line style in edited parent files.
+13. After editing, briefly confirm:
    - The project folder created.
    - The todos moved.
-   - The notes moved.
-   - Any relevant notes that were intentionally left in place.
+   - That notes were left in the parent workspace.
 
 ## Safety
 
 - Never move completed todos unless the user explicitly asks.
-- Never move note content that is only weakly related without confirmation.
-- Never delete note content unless it was moved into the project or is an exact duplicate created during the split.
+- Never move, copy, or delete note content during a project split.
 - Never overwrite an existing project folder.
 
 ## Examples
 
-- "split the kitchen renovation work into a project" creates a folder like `kitchen-renovation/`, moves matching open todos into `kitchen-renovation/todos/main.md`, and moves relevant notes into `kitchen-renovation/notes/`.
-- "create project app launch from the launch todos and notes" creates a folder like `app-launch/` and asks for confirmation before moving matched todos and notes.
+- "split the kitchen renovation work into a project" creates a folder like `kitchen-renovation/`, moves matching open todos into `kitchen-renovation/todos/main.md`, and leaves notes in the parent workspace.
+- "create project app launch from the launch todos" creates a folder like `app-launch/` and asks for confirmation before moving matched todos.

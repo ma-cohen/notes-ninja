@@ -15,7 +15,6 @@ Create an empty Notes Ninja project folder in this repository.
 ```text
 <project-name>/
 ├── .cursor/
-├── notes/
 └── todos/
     └── main.md
 ```
@@ -31,14 +30,14 @@ Create an empty Notes Ninja project folder in this repository.
 ## Completed
 ```
 
-6. Leave `<project-name>/notes/` empty.
+6. Do not create a project `notes/` folder. Notes stay in the parent workspace's global `notes/` folder.
 7. After creating the project, briefly confirm the folder name and the files created.
 
 ## Safety
 
 - Ask before editing if the requested folder name is ambiguous.
 - Never overwrite or merge into an existing folder unless the user explicitly confirms exactly how to proceed.
-- Never move existing todos or notes. Use `/nn-split-project` when existing work should move into the new project.
+- Never move existing todos or notes. Use `/nn-split-project` when existing todos should move into the new project; notes always stay in the parent workspace.
 
 ## Examples
 
