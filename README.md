@@ -52,31 +52,35 @@ Type `/` in chat to see available commands:
 /nn-todo call mom, finish report, book dentist
 ```
 
-The assistant adds todos to `todos/main.md` in the current workspace.
-
-### /nn-split-project - Split Work Into A Project
-
 ```
-/nn-split-project move the app launch tasks into their own project
+/nn-todo add book flights to travel
 ```
 
-```
-/nn-split-project split kitchen renovation into its own project
-```
+The assistant adds todos to an existing todo set in `todos/`. If you name an existing list, it adds there. If the target is unclear, it uses `todos/main.md`. It will not create new todo lists.
 
-The assistant finds matching open tasks in `todos/main.md`, creates a new todo-only project folder, copies `.cursor`, and asks you to confirm before moving any todos. Notes stay in the top-level `notes/` folder.
-
-### /nn-create-project - Create An Empty Project
+### /nn-new-todo - Create A Todo Set
 
 ```
-/nn-create-project personal website
+/nn-new-todo personal website
 ```
 
 ```
-/nn-create-project kitchen renovation
+/nn-new-todo kitchen renovation
 ```
 
-The assistant creates a new todo-only project folder with `.cursor/` and `todos/main.md`.
+The assistant creates a new empty todo-set file like `todos/personal-website.md`.
+
+### /nn-split-todo - Split Work Into A Todo Set
+
+```
+/nn-split-todo move the app launch tasks into their own list
+```
+
+```
+/nn-split-todo split kitchen renovation from main
+```
+
+The assistant finds matching open tasks, creates a new todo-set file in `todos/`, and asks you to confirm before moving any todos. Notes are not changed.
 
 ### /nn-remove-task - Remove Completed Todo Items
 
@@ -88,7 +92,19 @@ The assistant creates a new todo-only project folder with `.cursor/` and `todos/
 /nn-remove-task done with call mom and book dentist
 ```
 
-The assistant will remove matching open tasks from `todos/main.md`. You can remove one task or several at once.
+The assistant will remove matching open tasks from your todo sets. You can name a specific todo set, or let it search all todo sets.
+
+### /nn-prioritize - Organize Todo Priority
+
+```
+/nn-prioritize
+```
+
+```
+/nn-prioritize figure out what should happen first
+```
+
+The assistant will reorder open todos in one todo set by inferred dependency chains. If you do not name a todo set, it uses `todos/main.md`.
 
 ### /nn-add - Add Notes/Ideas
 
@@ -134,7 +150,7 @@ The assistant will reorganize files in `notes/` based on your request while pres
 /nn-just-do-it
 ```
 
-The assistant will review your open todos, help you pick one mission to do now, and wait for you to report back. When you finish, it removes that mission from `todos/main.md`.
+The assistant will review your open todos, help you pick one mission to do now, and wait for you to report back. When you finish, it removes that mission from the todo set it came from.
 
 ### /nn-push - Commit and Push
 
@@ -146,8 +162,8 @@ The assistant will review your repository changes, create a meaningful commit, a
 
 ## How It Works
 
-- **Todos** are stored in `todos/main.md` as a simple checkbox list
-- **Projects** are todo-only folders in the same repository, each with its own `.cursor/` and `todos/main.md`
+- **Todos** are stored as simple checkbox lists in `todos/*.md`
+- **Todo sets** are separate markdown files in `todos/`, with `todos/main.md` as the default list
 - **Notes** are stored globally in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
@@ -157,9 +173,10 @@ The assistant will review your repository changes, create a meaningful commit, a
 my-notes/
 ├── .cursor/commands/    # Slash commands
 │   ├── nn-todo.md
-│   ├── nn-split-project.md
-│   ├── nn-create-project.md
+│   ├── nn-new-todo.md
+│   ├── nn-split-todo.md
 │   ├── nn-remove-task.md
+│   ├── nn-prioritize.md
 │   ├── nn-add.md
 │   ├── nn-ask.md
 │   ├── nn-organize.md
@@ -167,18 +184,17 @@ my-notes/
 │   └── nn-push.md
 ├── notes/               # Your notes (auto-organized)
 ├── todos/
-│   └── main.md          # Your main todo list
-└── project-name/        # Optional nested project
-    ├── .cursor/
-    └── todos/
-        └── main.md
+│   ├── main.md          # Your default todo list
+│   └── travel.md        # Optional additional todo set
+└── README.md
 ```
 
 ## Tips
 
 - Keep your notes atomic - one idea per `/nn-add` command
-- Use `/nn-split-project` when todo work deserves its own project folder; notes stay in the top-level `notes/`
-- Use `/nn-create-project` when you want to start a new empty project
+- Use `/nn-prioritize` when your todo list needs a practical order based on dependencies
+- Use `/nn-new-todo` when you want to start a new empty todo set
+- Use `/nn-split-todo` when existing todo work deserves its own list
 - Use `/nn-ask` to find things you've forgotten
 - Use `/nn-organize` when related notes should be combined, split, renamed, or moved
 - Run `/nn-push` when you want to save your latest changes to GitHub
