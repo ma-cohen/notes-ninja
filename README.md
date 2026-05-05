@@ -106,7 +106,7 @@ The assistant will remove matching open tasks from your todo sets. You can name 
 
 The assistant will reorder open todos in one todo set by inferred dependency chains. If you do not name a todo set, it uses `todos/main.md`.
 
-### /nn-jira-start - Gather Jira Data For Todos
+### /nn-jira-start - Bootstrap Jira Context For Todos
 
 ```
 /nn-jira-start todos/work.md
@@ -116,7 +116,23 @@ The assistant will reorder open todos in one todo set by inferred dependency cha
 /nn-jira-start work
 ```
 
-The assistant reads one todo file, searches Jira through the configured Atlassian MCP server for related issues, and only writes the findings under a local `## Jira data` section in that todo file.
+The assistant reads one todo file, searches Jira through the configured Atlassian MCP server, and writes reusable project, parent, epic, and active sprint context under a local `## Jira data` section in that todo file.
+
+Example `## Jira data`:
+
+```markdown
+## Jira data
+
+- Project: RND - Aidoc R&D
+- High-level parent: RND-10535 - Mobile App Web Migration
+- High-level parent link: https://aidoc.atlassian.net/browse/RND-10535
+- Project skeleton epic: RND-10541 - Web App Project Sceleton
+- Project skeleton epic link: https://aidoc.atlassian.net/browse/RND-10541
+- Build infra epic: RND-10883 - Web App Build Infra
+- Build infra epic link: https://aidoc.atlassian.net/browse/RND-10883
+- Add new Jira stories from this todo to the latest active sprint
+- Current active sprint: 356 - FY27-S08 (Q2-S01), board 485
+```
 
 ### /nn-jira - Work With Jira
 
@@ -129,10 +145,14 @@ The assistant reads one todo file, searches Jira through the configured Atlassia
 ```
 
 ```
+/nn-jira create stories from the Build infra todos
+```
+
+```
 /nn-jira move APP-123 to In Progress
 ```
 
-The assistant uses the Atlassian MCP server to complete any supported Jira action, including creating, searching, updating, transitioning, commenting on, assigning, or linking issues. It may use todo context when helpful, but `/nn-jira` is not limited to linked todo markers.
+The assistant uses the Atlassian MCP server to complete any supported Jira action, including creating, searching, updating, transitioning, commenting on, assigning, or linking issues. It can use todo context from `## Jira data` to choose the project, parent or epic, and current active sprint, and it avoids creating duplicates for todo lines that already include Jira keys.
 
 ### /nn-add - Add Notes/Ideas
 
@@ -192,11 +212,11 @@ The assistant will review your repository changes, create a meaningful commit, a
 
 - **Todos** are stored as simple checkbox lists in `todos/*.md`
 - **Todo sets** are separate markdown files in `todos/`, with `todos/main.md` as the default list
-- **Jira data** is stored in a `## Jira data` section after `/nn-jira-start` gathers related issues through an Atlassian MCP server
+- **Jira data** is stored in a `## Jira data` section after `/nn-jira-start` gathers reusable project, parent, epic, and active sprint context through an Atlassian MCP server
 - **Notes** are stored globally in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
-Jira commands require an Atlassian MCP server configured in Cursor before they can gather data or update issues.
+Jira commands require an Atlassian MCP server configured in Cursor before they can gather context, discover active sprints, create stories, or update issues.
 
 ## File Structure
 
@@ -228,7 +248,7 @@ my-notes/
 - Use `/nn-prioritize` when your todo list needs a practical order based on dependencies
 - Use `/nn-new-todo` when you want to start a new empty todo set
 - Use `/nn-split-todo` when existing todo work deserves its own list
-- Use `/nn-jira-start` to gather related Jira context for a todo file
+- Use `/nn-jira-start` to gather reusable Jira context for a todo file before creating stories from it
 - Use `/nn-ask` to find things you've forgotten
 - Use `/nn-organize` when related notes should be combined, split, renamed, or moved
 - Run `/nn-push` when you want to save your latest changes to GitHub
