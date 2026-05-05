@@ -1,6 +1,6 @@
 # Gather Jira Data For Todos
 
-Gather related Jira findings for one todo file using the configured Atlassian MCP server, then write the findings under `## Jira data` in that todo file.
+Only gather related Jira findings for one todo file using the configured Atlassian MCP server, then write the findings under `## Jira data` in that todo file.
 
 ## Instructions
 
@@ -23,7 +23,7 @@ Gather related Jira findings for one todo file using the configured Atlassian MC
    - Section names
    - Existing Jira issue keys mentioned anywhere in the todo file
    - Project keys, product names, labels, people, or other obvious hints from the user's request and todo file
-6. Gather findings only. For each related Jira issue, collect:
+6. Gather findings only; do not change Jira issues. For each related Jira issue, collect:
    - Issue key
    - Summary
    - Status

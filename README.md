@@ -116,19 +116,23 @@ The assistant will reorder open todos in one todo set by inferred dependency cha
 /nn-jira-start work
 ```
 
-The assistant reads one todo file, searches Jira through the configured Atlassian MCP server for related issues, and writes the findings under a `## Jira data` section in that todo file.
+The assistant reads one todo file, searches Jira through the configured Atlassian MCP server for related issues, and only writes the findings under a local `## Jira data` section in that todo file.
 
-### /nn-jira - Work With Linked Jira Issues
-
-```
-/nn-jira show status for login flow
-```
+### /nn-jira - Work With Jira
 
 ```
-/nn-jira move login flow to In Progress
+/nn-jira show status for APP-123
 ```
 
-The assistant finds the todo, reads its Jira marker, and uses the Atlassian MCP server to complete the requested Jira action.
+```
+/nn-jira create a bug for login failing on Safari
+```
+
+```
+/nn-jira move APP-123 to In Progress
+```
+
+The assistant uses the Atlassian MCP server to complete any supported Jira action, including creating, searching, updating, transitioning, commenting on, assigning, or linking issues. It may use todo context when helpful, but `/nn-jira` is not limited to linked todo markers.
 
 ### /nn-add - Add Notes/Ideas
 
