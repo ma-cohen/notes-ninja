@@ -16,7 +16,7 @@ Use a linked Jira issue from an existing todo to complete the Jira action the us
    - If multiple todos match, ask one short clarification question before using Jira MCP tools.
    - If no todo matches, tell the user no matching todo was found.
 5. Require the matched todo to have a Jira marker matching `<!-- jira: KEY-123 -->`.
-   - If the todo has no Jira marker, tell the user to run `/nn-jira-start` first.
+   - If the todo has no Jira marker, tell the user no linked Jira issue marker was found.
    - Do not create Jira issues from `/nn-jira`.
 6. Interpret the user's message as a Jira action for the linked issue key.
 7. Use the Atlassian MCP server to perform the requested action, such as:
@@ -41,7 +41,7 @@ Use a linked Jira issue from an existing todo to complete the Jira action the us
 ## Safety
 
 - Never edit files outside `todos/`.
-- Never create Jira issues from `/nn-jira`; use `/nn-jira-start` for creation.
+- Never create Jira issues from `/nn-jira`.
 - Never remove, complete, or rewrite todos unless the user explicitly asks for that local todo change.
 - Prefer asking a short clarification question over guessing when an action could affect the wrong Jira issue.
 

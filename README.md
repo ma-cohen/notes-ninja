@@ -106,17 +106,17 @@ The assistant will remove matching open tasks from your todo sets. You can name 
 
 The assistant will reorder open todos in one todo set by inferred dependency chains. If you do not name a todo set, it uses `todos/main.md`.
 
-### /nn-jira-start - Create Jira Stories From Todos
+### /nn-jira-start - Gather Jira Data For Todos
 
 ```
-/nn-jira-start
+/nn-jira-start todos/work.md
 ```
 
 ```
-/nn-jira-start use project APP for development todos
+/nn-jira-start work
 ```
 
-The assistant scans open todos, asks what Jira context is needed for each todo set, creates Jira stories through the configured Atlassian MCP server, and writes each created issue key back to the todo line like `<!-- jira: APP-123 -->`.
+The assistant reads one todo file, searches Jira through the configured Atlassian MCP server for related issues, and writes the findings under a `## Jira data` section in that todo file.
 
 ### /nn-jira - Work With Linked Jira Issues
 
@@ -128,7 +128,7 @@ The assistant scans open todos, asks what Jira context is needed for each todo s
 /nn-jira move login flow to In Progress
 ```
 
-The assistant finds the todo, reads its Jira marker, and uses the Atlassian MCP server to complete the requested Jira action. Run `/nn-jira-start` first for todos that are not linked to Jira yet.
+The assistant finds the todo, reads its Jira marker, and uses the Atlassian MCP server to complete the requested Jira action.
 
 ### /nn-add - Add Notes/Ideas
 
@@ -188,11 +188,11 @@ The assistant will review your repository changes, create a meaningful commit, a
 
 - **Todos** are stored as simple checkbox lists in `todos/*.md`
 - **Todo sets** are separate markdown files in `todos/`, with `todos/main.md` as the default list
-- **Jira links** are stored inline on todo lines as `<!-- jira: APP-123 -->` after `/nn-jira-start` creates issues through an Atlassian MCP server
+- **Jira data** is stored in a `## Jira data` section after `/nn-jira-start` gathers related issues through an Atlassian MCP server
 - **Notes** are stored globally in `notes/` as markdown files, organized by topic and reorganized with `/nn-organize` when needed
 - **Syncing** happens when you run `/nn-push`, so commits and pushes are always user-initiated
 
-Jira commands require an Atlassian MCP server configured in Cursor before they can create or update issues.
+Jira commands require an Atlassian MCP server configured in Cursor before they can gather data or update issues.
 
 ## File Structure
 
@@ -224,7 +224,7 @@ my-notes/
 - Use `/nn-prioritize` when your todo list needs a practical order based on dependencies
 - Use `/nn-new-todo` when you want to start a new empty todo set
 - Use `/nn-split-todo` when existing todo work deserves its own list
-- Use `/nn-jira-start` to create Jira stories from todos, then `/nn-jira` to update those linked Jira issues
+- Use `/nn-jira-start` to gather related Jira context for a todo file
 - Use `/nn-ask` to find things you've forgotten
 - Use `/nn-organize` when related notes should be combined, split, renamed, or moved
 - Run `/nn-push` when you want to save your latest changes to GitHub
