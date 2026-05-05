@@ -18,6 +18,8 @@ curl -fsSL "$REPO_URL/.cursor/commands/nn-new-todo.md" -o "$DIR_NAME/.cursor/com
 curl -fsSL "$REPO_URL/.cursor/commands/nn-split-todo.md" -o "$DIR_NAME/.cursor/commands/nn-split-todo.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-remove-task.md" -o "$DIR_NAME/.cursor/commands/nn-remove-task.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-prioritize.md" -o "$DIR_NAME/.cursor/commands/nn-prioritize.md"
+curl -fsSL "$REPO_URL/.cursor/commands/nn-jira-start.md" -o "$DIR_NAME/.cursor/commands/nn-jira-start.md"
+curl -fsSL "$REPO_URL/.cursor/commands/nn-jira.md" -o "$DIR_NAME/.cursor/commands/nn-jira.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-add.md" -o "$DIR_NAME/.cursor/commands/nn-add.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-ask.md" -o "$DIR_NAME/.cursor/commands/nn-ask.md"
 curl -fsSL "$REPO_URL/.cursor/commands/nn-organize.md" -o "$DIR_NAME/.cursor/commands/nn-organize.md"
